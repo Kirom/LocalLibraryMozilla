@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Title: {{ object.book.title }}</h1>
+<h3>Instance: {{ object.id}}</h3>
+<h3>Borrower: {{ object.borrower}}</h3>
+<h3 class="{% if object.is_overdue %}text-danger{% endif %}">Due back: {{ object.due_back}}</h3>
+
+<p><strong>Author:</strong> <a href="">{{ object.book.author }}</a></p> <!-- author detail link not yet defined -->
+<p><strong>Summary:</strong> {{ object.book.summary }}</p>
+<p><strong>ISBN:</strong> {{ object.book.isbn }}</p>
+<p><strong>Language:</strong> {{ object.book.language }}</p>
+<p><strong>Genre:</strong> {% for genre in object.book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+
+
+{% endblock %}
